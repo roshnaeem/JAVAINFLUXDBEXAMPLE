@@ -1,0 +1,88 @@
+version: "3"
+
+services:
+
+  influxdb:
+    restart: always
+    image: influxdb:2.1.1
+    volumes:
+      -  ./influxdb_data:/var/lib/influxdb2:rw
+    env_file:
+      - .env
+    entrypoint: ["./entrypoint.sh"]
+    restart: on-failure:10
+    ports:
+      - ${DOCKER_INFLUXDB_INIT_PORT}:8086
+
+  telegraf:
+    restart: always
+    image: telegraf:1.19
+    volumes:
+      - ${TELEGRAF_CFG_PATH}:/etc/telegraf/telegraf.conf:rw
+    env_file:
+      - .env
+    depends_on:
+      - influxdb
+
+  grafana:
+    restart: always
+    image: grafana/grafana-oss:8.4.3
+    volumes:
+      - grafana-storage:/var/lib/grafana:rw
+    depends_on:
+      - influxdb
+    ports:
+      - ${GRAFANA_PORT}:3000
+
+  mosquitto-container:
+    restart: always
+    image: eclipse-mosquitto
+    volumes:
+      - ${MOSQUITTO_CFG_PATH}:/mosquitto/config/mosquitto.conf:ro
+    env_file:
+      - .env
+    ports:
+      - 1883:1883
+
+
+  service1:
+    build: docker/docker-elec/
+    restart: always
+
+  service2:
+      restart: always
+      build: docker/docker-gas/
+
+  service3:
+    restart: always
+    build: docker/docker-water/
+
+  service4:
+    restart: always
+    build: docker/docker-meter/
+
+  service5:
+    restart: always
+    build: docker/docker-fire-meter/
+
+  service6:
+    restart: always
+    build: docker/docker-fire-sensor/
+
+  service7:
+    restart: always
+    build: docker/docker-lock-meter/
+
+  service8:
+    restart: always
+    build: docker/docker-lock-sensor/
+
+  service9:
+    restart: always
+    build: docker/docker-nodered/
+    ports:
+      - 1880:1880
+
+
+volumes:
+  grafana-storage:
