@@ -28,7 +28,7 @@ services:
     restart: always
     image: grafana/grafana-oss:8.4.3
     volumes:
-      - grafana-storage:/var/lib/grafana:rw
+      - ./grafana_data:/var/lib/grafana:rw
     depends_on:
       - influxdb
     ports:
@@ -82,7 +82,3 @@ services:
     build: docker/docker-nodered/
     ports:
       - 1880:1880
-
-
-volumes:
-  grafana-storage:
