@@ -43,6 +43,8 @@ Grafana Username: admin
 
 Grafana Password: admin 
 
+Go to "Smart Building" Dashboard in the dashboards section. 
+
 
 
 ## Services Used
