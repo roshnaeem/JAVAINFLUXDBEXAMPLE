@@ -29,6 +29,22 @@ Services can be accessed at follwing ports:
 * Grafana: http://localhost:3000/
 * Nodered: http://localhost:1880/
 
+### InfluxDB Credentials
+InfluxDB: http://localhost:8086/
+
+InfluxDB Username: roshnaeem
+
+InfluxDB Password: smart_home_iot 
+
+### Grafana Credentials 
+Grafana: http://localhost:3000/
+
+Grafana Username: admin
+
+Grafana Password: admin 
+
+
+
 ## Services Used
 
 ### Mqtt
