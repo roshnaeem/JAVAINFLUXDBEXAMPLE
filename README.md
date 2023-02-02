@@ -4,9 +4,10 @@
 
 <img src="/dashboard-iot.png" alt="Dashboard IOT" style="height: 400px; width:600px;"/>
 
-## Getting Started
-
+## Requirements 
 Make sure you use to Compose V2 with the docker compose CLI plugin or by activating the Use Docker Compose V2 setting in Docker Desktop.
+
+## Getting Started
 
 Clone the project
 
