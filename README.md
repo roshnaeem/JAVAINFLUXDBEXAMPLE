@@ -6,6 +6,8 @@
 
 ## Getting Started
 
+Make sure you use to Compose V2 with the docker compose CLI plugin or by activating the Use Docker Compose V2 setting in Docker Desktop.
+
 Clone the project
 
 ```bash
